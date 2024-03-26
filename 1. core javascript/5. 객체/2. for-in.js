@@ -10,7 +10,6 @@ var phone = {
 for (var data in phone){
   // console.log(data); // key를 구함
   console.log(phone[data]); // 반복되는 data가 string타입이기 때문에 .data가 아니라 []를 사용한다.
-  // console.log(typeof data);
 }
 
 // 객체 프로퍼티 유무 확인
