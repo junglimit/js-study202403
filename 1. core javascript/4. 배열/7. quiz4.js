@@ -16,7 +16,7 @@ while (true) {
   var modifyTarget = prompt(`현재 멤버: ${tvxq}\n수정할 이름을 입력하세요.`)
 
   if(tvxq.includes(modifyTarget)){
-    // 삭제 타겟이 있는 경우
+    // 수정할 타겟이 있는 경우
     var newName = prompt('새로운 이름을 입력하세요!')
     tvxq[inx] = newName;
     var idx = tvxq.indexOf(modifyTarget);
@@ -24,7 +24,7 @@ while (true) {
     alert(`수정 완료!\n남은 멤버: [${tvxq}]`);
     break;
   }else{
-    // 삭제 타겟이 없는 경우
+    // 수정할 타겟이 없는 경우
     alert(`${modifyTarget}은(는) 잘못된 이름입니다.\n다시 입력하세요!`);
   }
 }
