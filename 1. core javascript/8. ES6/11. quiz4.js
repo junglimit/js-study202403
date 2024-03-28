@@ -84,10 +84,39 @@ const newAllTraders = [...new Set(allTraders)]
 console.log(newAllTraders);
 
 // 연습 5: 서울에 사는 거래자의 모든 거래액의 총합 출력.
-let sum = 0;
+// let sum = 0;
 
-const allValue = traders
-.map(traders => traders.value)
-.forEach(traders => sum += traders);
+// const allValue = traders
+// .filter(traders => traders.trader.city === '서울')
+// .map(traders => traders.value)
+// .forEach(traders => sum += traders);
 
-console.log(sum);
+// console.log(sum);
+
+
+
+// 연습 5: 서울에 사는 거래자의 모든 거래액의 총합 출력. / 고차함수X
+// console.log('========================');
+
+// let total = 0;
+
+// const newArray = [];
+// for (const trs of traders) {
+//   if (trs.trader.city === '서울') {
+//     newArray.push(trs);
+//   }
+// }
+
+// for (const filteredTrs of newArray) {
+//   // console.log(filteredTrs.value);
+//   total += filteredTrs.value;
+// }
+// console.log(`총액: ${total}`);
+
+
+const total = traders
+  .filter(trs => trs.trader.city === '서울')
+  .reduce((total,trs) => total + trs.value, 0);
+  
+  console.log(`총액: ${total}`);
+  
