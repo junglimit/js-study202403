@@ -60,13 +60,13 @@ const daejeonTotal = traders
 .filter(traders => traders.trader.city === '대전' && traders.year === 2023)
 .map(traders => traders.value)
 .forEach(traders => total += traders);
-console.log(total);
+console.log(`대전 거래 총액: ${total}`);
 
 // 2. **부산에서 거래한 모든 거래자의 이름을 배열에 담아 출력해주세요.**
-const busan = traders
+const busanTrs = traders
 .filter(traders => traders.trader.city === '부산')
 .map(traders => traders.trader.name)
-console.log(busan);
+console.log(busanTrs);
 
 
 // 3. **모든 거래 중 가장 높은 거래액을 가진 거래의
@@ -74,20 +74,40 @@ console.log(busan);
 let high = 0;
 const highValue = traders
 .map(traders => traders.value)
-.forEach(function(item, index){
-  let result = high < item ? high = item : high;
-  return result;
-})
-
-console.log(highValue);
+.reduce((max, n) => max < n ? n : max);
+console.log(`가장 높은 거래액: ${highValue}`);
 
 
 
 
 
-// 4. **각 도시별로 발생한 총 거래액을 객체 형태로 매핑해주세요. 예를 들어, `{서울: 총거래액, 부산: 총거래액}`과 같은 형태입니다.**
+// 4. **각 도시별로 발생한 총 거래액을 객체 형태로 매핑해주세요. 
+// 예를 들어, `{서울: 총거래액, 부산: 총거래액}`과 같은 형태입니다.**
+
+const seoul = traders
+.filter(traders => traders.trader.city === '서울')
+.map(traders => traders.value)
+.reduce((max, n) => max + n);
+
+const daejeon = traders
+.filter(traders => traders.trader.city === '대전')
+.map(traders => traders.value)
+.reduce((max, n) => max + n);
+
+const busan = traders
+.filter(traders => traders.trader.city === '부산')
+.map(traders => traders.value)
+.reduce((max, n) => max + n);
+
+
+console.log(`서울: ${seoul}, 대전: ${daejeon}, 부산: ${busan}`);
 
 // 5. **거래액이 700000원 이상인 거래를 모두 찾아, 해당 거래의 연도별로 분류해주세요. 결과는 `{2022: [...거래정보], 2023: [...거래정보]}`와 같은 형태가 되어야 합니다.**
+
+
+const highTrs = traders
+.filter(traders => traders.value >= 700000)
+highTrs.year
 
 // 6. **각 거래자별로 그들이 진행한 거래의 평균 거래액을 계산해주세요. 결과는 `{거래자이름: 평균거래액}` 형태의 객체가 되어야 합니다.**
 
