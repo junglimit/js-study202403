@@ -45,6 +45,7 @@ function find(condition){
       return first;
     }
   }
+  return null;
 }
 
 
@@ -52,21 +53,20 @@ function some(condition) {
   for (user of userList){
     if(condition(user)){
       return true;
-    }else{
-      return false;
     }
   }
+  return false;
 }
 
 function every(condition) {
   for(user of userList){
     if(!condition(user)){
     return false;
-    }else{
-      return true;
     }
   }
+return true;
 }
+
 
 // '서울'에 사는 첫 번째 사용자를 찾는 예시
 // const firstUserInSeoul = find((user) => user.address === '서울');
