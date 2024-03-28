@@ -1,9 +1,7 @@
-
 // 어떤 계산을 하는 함수
 function operate(param) {
   console.log(`param: ${param}`);
-  
-  console.log('계산기 작동!!');
+
   const n1 = 10, n2 = 20;
   const result = param(n1, n2);
   return result;
