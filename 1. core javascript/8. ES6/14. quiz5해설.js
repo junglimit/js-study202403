@@ -117,7 +117,7 @@ console.log('============================');
 const highestTransaction = traders.reduce((max, trs) =>
   max.value < trs.value ? trs : max
 );
-
+console.log(highestTransaction);
 console.log(
   `가장 높은 거래액 정보 - 이름: ${highestTransaction.trader.name}, 도시: ${highestTransaction.trader.city}, 거래액: ${highestTransaction.value}`
 );
@@ -162,12 +162,69 @@ console.log(totalByCity);
 //   해당 거래의 연도별로 분류해주세요. 결과는
 //   `{2022: [...거래정보], 2023: [...거래정보]}`와 같은 형태가 되어야 합니다.**
 
+const trsOver700kByYear = traders 
+  .filter(trs => trs.value >= 700000)
+  .reduce((transactions, trs) => {
+    const yearString = trs.year.toString();
+    if (!transactions[yearString]) {
+      transactions[yearString] = [trs];
+    }else {
+      transactions[yearString].push(trs);
+    }
+    return transactions;
+  }, {});
+
+console.log(JSON.stringify(trsOver700kByYear, null, 2));
+
+
 // 6. **각 거래자별로 그들이 진행한 거래의
 //   평균 거래액을 계산해주세요.
 //   결과는 `{거래자이름: 평균거래액}` 형태의 객체가 되어야 합니다.**
 
+const trsDataByName = traders.reduce((averageList, trs) => {
+  const name = trs.trader.name;
+  if (!averageList[name]) { // 이 사람이름이 처음 등장했으면
+    averageList[name] = { total: trs.value, count: 1 };
+  } else {
+    averageList[name].total += trs.value;
+    averageList[name].count++;
+  }
+  return averageList;
+}, {});
+
+// console.log(trsDataByName);
+
+// 평균 구하기
+for (const key in trsDataByName) {
+  trsDataByName[key].average = trsDataByName[key].total / trsDataByName[key].count;
+
+}
+console.log(trsDataByName);
+
 // 7. **2022년과 2023년 각각에서 가장 많은 거래를 한 거래자의
 //   이름과 그 거래 횟수를 출력해주세요.**
+
+const result = traders.reduce((acc, trs) => {
+  // 연도별 거래자 거래 횟수 집계
+  const key = `${trs.year}_${trs.trader.name}`;
+
+  if (!acc[key]) {
+    acc[key] = 1;
+  } else {
+    acc[key]++;
+  }
+  // 연도별 최대 거래 횟수 찾기
+  const yearMaxKey = `max_${trs.year}`;
+  if (!acc[yearMaxKey] || acc[key] > acc[yearMaxKey].count) {
+    acc[yearMaxKey] = { name: trs.trader.name, count: acc[key] }
+  }
+  return acc;
+}, {});
+
+console.log(result);
+// 결과 출력
+console.log(`2022년 가장 많은 거래를 한 거래자: ${result.max_2022.name}, 거래 횟수: ${result.max_2022.count}`);
+console.log(`2023년 가장 많은 거래를 한 거래자: ${result.max_2023.name}, 거래 횟수: ${result.max_2023.count}`);
 
 // 8. **모든 거래 중 거래액이 중간값인
 //   거래의 정보(거래자 이름, 도시, 연도, 거래액)를 출력해주세요.**
