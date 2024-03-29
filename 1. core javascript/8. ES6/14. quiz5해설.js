@@ -71,6 +71,14 @@ const traders = [
     year: 2022,
     value: 500000,
   },
+  {
+    trader: {
+      name: '루피',
+      city: '대전',
+    },
+    year: 2023,
+    value: 990000,
+  },
 ];
 
 // 1. **2023년에 대전에서 발생한 모든 거래의 총액을 계산해주세요.**
@@ -229,9 +237,51 @@ console.log(`2023년 가장 많은 거래를 한 거래자: ${result.max_2023.na
 // 8. **모든 거래 중 거래액이 중간값인
 //   거래의 정보(거래자 이름, 도시, 연도, 거래액)를 출력해주세요.**
 
+// 거래액 오름차로 정렬
+// 정렬은 원본을 손상시킴 - 안전하게 하려면 복사 후 정렬
+console.log('=====================================');
+const sortedTraders = traders.slice().sort((a, b) => a.value - b.value);
+// console.log(sortedTraders);
+
+// 중간값 거래 정보 찾기
+
+// 배열의 요소 수가 홀수면 정확한 중간인덱스값을, 짝수면
+// 중앙 두 값의 평균을 중간값으로 한다. 
+const middleIndex = Math.floor(sortedTraders.length / 2); // 중앙 인덱스 찾기
+
+let middleTradeInfo;
+if (sortedTraders.length % 2 === 1){ // 배열의 요소 수가 홀수인 경우
+  // 정확한 중간 인덱스를 지정
+  middleTradeInfo = sortedTraders[middleIndex];
+  
+} else{ // 짝수인 경우
+  middleTradeInfo = [
+    sortedTraders[middleIndex-1],
+     sortedTraders[middleIndex]
+    ];
+}
+
+console.log(middleTradeInfo);
+
+
+
 // 9. **각 도시에서 진행된 거래의 수를 계산해주세요.
 //   결과는 `{도시이름: 거래수}` 형태의 객체여야 합니다.**
+
+console.log('==================================');
+const trsCountByCity = traders.reduce((acc, trs) => {
+  if(!acc[trs.trader.city]) {
+    acc[trs.trader.city] = 1;
+  } else{
+    acc[trs.trader.city]++;
+  }
+  return acc;
+},{});
+console.log(trsCountByCity);
 
 // 10. **거래액을 기준으로 모든 거래를 오름차순으로 정렬한 후,
 //   정렬된 리스트를 출력해주세요.
 //   각 거래 정보는 거래자 이름, 도시, 연도, 거래액을 포함해야 합니다.**
+console.log('==================================');
+const sortedTransactions = traders.slice().sort((a, b) => a.value - b.value);
+console.log(sortedTraders);
