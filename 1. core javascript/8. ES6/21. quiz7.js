@@ -84,3 +84,17 @@ const decrementorFromTwentyByThreeWithThreshold = createDecrementorWithThreshold
 console.log(decrementorFromTwentyByThreeWithThreshold()); // 17
 console.log(decrementorFromTwentyByThreeWithThreshold()); // 14
 console.log(decrementorFromTwentyByThreeWithThreshold()); // 11
+
+console.log('=====================================');
+
+// 주어진 초기 값과 곱할 값을 파라미터로 받아서 호출될 때마다 해당 값으로 곱한 결과를 반환하는 클로저 함수를 만드세요.
+
+const createMultiplier = (initialValue) => {
+  let num = initialValue;
+  return (a) =>  num * a;
+};
+
+const multiplierFromFive = createMultiplier(5);
+console.log(multiplierFromFive(2)); // 10
+console.log(multiplierFromFive(3)); // 15
+console.log(multiplierFromFive(4)); // 20
