@@ -37,21 +37,6 @@
         for($l of $list1){
           $l.style.background = 'yellow';
         }
-        // for(i = 1; i <= $list1.length; i++){
-        //   if (i % 2 === 0){
-        //     $list1.style.background = 'gray';
-        //   }else{
-        //     $list1.style.background = 'yellow';
-        //   }
-        // }
-        // for (const $l of $list1){
-        //   $l.li.style['background-color'] = 'yellow';
-          
-        // }
-
-
-
-
         
         //2. id="list1"인 요소에 <li> 요소중
         //   짝수번째 요소만 선택후 배경색상 gray 적용  
@@ -112,6 +97,8 @@
     //   }
     // }
 
+    
+
     $listItems
       .filter(($li, i) => i % 2 === 0)
       .forEach($li => $li.style.background = 'yellow');
@@ -140,11 +127,12 @@
 
     //6. id="list1"인 요소에 <li> 요소중  3번째 이전 요소만 선택후 
     //   border: 2px dotted aqua 적용 (1, 2번째만 선택)
-    [$first, $second].forEach($li => $li.style.border = '2px dotted aqua');
+    [$first, $second].forEach($li => $li.style.border = '2px dotted qua');
 
     //7. id="list1"인 요소에 <li> 요소중  3번째 이후요소만 선택후
     //   border 2px dashed violet 적용 (3번째부터 끝까지 선택)
     $otherItems.forEach($li => $li.style.border = '2px dashed violet');
+
 
 
 
