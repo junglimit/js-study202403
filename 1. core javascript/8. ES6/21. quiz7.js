@@ -72,11 +72,12 @@ const createDecrementorWithThreshold = (initialValue, decrementAmount, threshold
   let value = initialValue;
   return () => {
     value -= decrementAmount;
-    if (value < threshold) {
-      return undefined;
-    } else {
-      return value;
-    }
+    // if (value < threshold) {
+    //   return undefined;
+    // } else {
+    //   return value;
+    // }
+    return value < threshold ? undefined : value;
   };
 };
 
