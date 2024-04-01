@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul id="fruits">
+      <li class="fr apple">사과</li>
+      <li class="fr banana">바나나</li>
+      <li class="fr grape">포도</li>
+    </ul>
+
+    <div class="box"></div>
+
+    <script>
+      const $ul = document.getElementById("fruits"); //getElementById는 # 안붙임!!
+
+      const $children = [...$ul.children]; // 유사배열이니까 배열로 가져오는게 편함
+      console.log($children);
+
+      const $first = $ul.firstElementChild; // 첫째자식 가져오기
+      const $last = $ul.lastElementChild;
+      // console.log($first);
+
+      $first.style.fontSize = '2em';
+      $last.style.color = 'violet';
+
+      function hasChildren($tag) {
+        // return $tag.children.length > 0;
+        return !!$tag.children.length; // !!는 숫자는 불리언타입으로 바꿈. length가 0이면 false
+      }
+
+
+      const $box = document.querySelector('.box');
+      console.log($box.children);
+      // console.log($box.hasChildNodes());  //공백을 자식으로 인식함
+      console.log($box.hasChildren($box));  //새로 함수 선언해서 사용함 
+      
+
+
+    </script>
+  </body>
+</html>
