@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <botton id="btn">버튼입니다.</botton>
+
+
+
+
+<script>
+  const $btn = document.getElementById('btn');
+
+  // 이벤트 핸들러
+  const helloHandler = () => alert ('안뇽');
+
+  $brn.addEventListener ('click', helloHandler);
+
+  // 기존 핸들러를 지우고 싶으면 수동으로 지워야함(기명함수여야함)
+ $brn.removeEventListener('click', helloHandler)
+
+  $brn.addEventListener ('click', () => {
+    $btn.style.background = 'aqua';
+  });
+
+
+</script>
+
+
+</body>
+</html>
