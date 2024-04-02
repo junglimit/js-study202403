@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+
+  <p class="msg"></p>
+
+  <p id="clock"></p>
+
+
+  <script>
+    const $msg = document.querySelector('.msg');
+    // setInterval(() => {
+      //   $msg.textContent += '해윙~\n';
+      // }, 500);
+      
+      // 비동기라서 for문이랑 따로 실행됨
+      for (let i = 0; i < 5; i++) {
+        console.log(i);
+        
+      }
+      const $clock = document.getElementById('clock')
+
+      // 현재 시간 가져오기
+      // console.log(now.toLocaleTimeString());
+
+      
+      setInterval(() => {
+        const now = new Date();
+        $clock.textContent = now.toLocaleTimeString();
+        
+      }, 1000);
+
+  </script>
+
+</body>
+</html>
