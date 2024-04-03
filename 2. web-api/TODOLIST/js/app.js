@@ -68,19 +68,30 @@ $checkBox.forEach($checkBox => {
 const $undo = document.querySelector('.lnr-undo');
 const $text = document.querySelector('.text');
 const $checkbox = document.querySelector('.checkbox')
+const $todoList = document.querySelector('.todo-list')
 
-$undo.addEventListener('click', e => {
+$todoList.addEventListener('click', e => {
+  if(e.target.classList.contains('lnr-undo') === true){
+
+  // const target = e.target;
+  const isUndo = $undo.classList.contains('lnr-undo');
+  if(isUndo){
   // 클릭하면 lnr-undo의 클래스를 lnr-checkmark-circle로 바꾼다
-  $undo.classList.replace('lnr-undo', 'lnr-checkmark-circle');
+  e.target.classList.replace('lnr-undo', 'lnr-checkmark-circle');
   // 클릭하면 text를 지우고 modify-input클래스를 추가한다
   const $input = document.createElement('input');
   $input.setAttribute('type', 'text');
   $input.classList.add('modify-input');
   $checkbox.replaceChild($input, $text);
-  // 새로 입력된 내용을 그 자리에 추가해준다
-  $undo.addEventListener('click', e => {
-    
-  })
+} else{
+    $undo.classList.replace('lnr-checkmark-circle', 'lnr-undo');
+    $input.remove();
+    const $span = document.createElement('span');
+    $span.classList.add('text');
+    $checkbox.replaceChild($span, $text);
+  }
+}
+
 })
 
 
