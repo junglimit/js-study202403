@@ -5,7 +5,7 @@ const $addBtn = document.getElementById('btn-add');
 const $subtractBtn = document.getElementById('btn-subtract');
 const $multiplyBtn = document.getElementById('btn-multiply');
 const $divideBtn = document.getElementById('btn-divide');
-const $logs = document.getElementById('log-entries')
+// const $logs = document.getElementById('log-entries')
 const $logList = document.querySelector('.log-entries')
 // result 요소 노드
 const $currentResult = document.getElementById('current-result');
@@ -32,7 +32,7 @@ const calculate = (operator) => {
     break;
     case 'x': currentResult *= enteredNumber;
     break;
-    case '/': currentResult /= enteredNumber;
+    case '/': parseInt(currentResult /= enteredNumber); // 소수점 떼기 Math.floor
     break;
     default:
       break;
@@ -51,6 +51,7 @@ const calculate = (operator) => {
   arr.push(log);
   arr.forEach(log => {
     const $logItem = document.createElement('li');
+    $logItem.classList.add('log-entries__item');
     $logItem.textContent = log;
     $logList.appendChild($logItem);
   });
