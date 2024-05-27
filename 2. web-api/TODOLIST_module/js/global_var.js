@@ -2,7 +2,8 @@
 //========= 전역 변수 영역 ========//
 
 // 현재 수정모드에 진입하셨나요?
-let isEnterEditMode = false;
+// let변수는 export하는 순간 const가 됨
+// let isEnterEditMode = false; 
 
 // 서버와 통신할 데이터
 const todos = [
