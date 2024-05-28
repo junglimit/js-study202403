@@ -25,10 +25,12 @@
       const requestInfo = {
         method: "POST",
         headers: {
+          // 보내는 타입이 뭔지 써줌
           'content-type': 'application/json',
           
         },
         body: JSON.stringify({
+          // 보내야 하는 필수 키밸류를 매칭해서 보내줌
           text: document.getElementById('reply-text').value,
           author: document.getElementById('reply-writer').value ,
           bno: 101
