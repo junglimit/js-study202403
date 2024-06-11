@@ -51,3 +51,14 @@ const $btn = document.getElementById('btn');
 
 // $btn.addEventListener('click', clickHandler.bind($input));
 $btn.addEventListener('click', clickHandler.bind($btn, '사과')); // 추가 파라미터 전달 방법
+
+
+const bindedClickHandler = clickHandler.bind($btn, '레몬');
+
+// $btn.addEventListener('click', clickHandler.bind($input));
+
+// $btn.addEventListener('click', bindedClickHandler);
+
+$btn.addEventListener('click', function(name, e) {
+  console.log('이름:', name);
+}.bind($btn, '김멍멍'));
