@@ -1,16 +1,16 @@
+import Component from './Component.js';
 
-class ProductItem {
-  constructor(prod){
-    this.prod = prod
+// LI 태그 렌더링 담당
+class ProductItem extends Component {
+  constructor(tagId, prod) {
+    super(tagId);
+    this.prod = prod;
   }
 
   render() {
+    const { title, price, image, desc } = this.prod;
 
-    const { title, price, image, desc } = this.prod
-
-    const $prodLi = document.createElement('li')
-    $prodLi.classList.add('product-item');
-    $prodLi.innerHTML = `
+    const childHtml = `
     <div>
       <img src="${image}" alt="${title}">
       <div class="product-item__content">
@@ -20,10 +20,17 @@ class ProductItem {
         <button>담기</button>
       </div>
     </div>
-  `;
+    `;
 
+    const $prodLi = this.createElement('li', 'product-item', childHtml);
 
-  return $prodLi;
+    const $btn = $prodLi.querySelector('button');
+    $btn.addEventListener('click', (e) => {
+      console.log(title);
+      console.log('버튼 크릭!!');
+    });
+
+    return $prodLi;
   }
 }
 
