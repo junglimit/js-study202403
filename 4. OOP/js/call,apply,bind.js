@@ -55,8 +55,6 @@ $btn.addEventListener('click', clickHandler.bind($btn, '사과')); // 추가 파
 
 const bindedClickHandler = clickHandler.bind($btn, '레몬');
 
-// $btn.addEventListener('click', clickHandler.bind($input));
-
 // $btn.addEventListener('click', bindedClickHandler);
 
 $btn.addEventListener('click', function(name, e) {
